@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xue.study.snow.mapper.HelloDAO">
+    <!--填写映射-->
+    <insert id="insert" parameterType="java.util.Map">
+      insert into user(username,age,phone) value(#{username},#{age},#{phone})
+    </insert>
+</mapper>
