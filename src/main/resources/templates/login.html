@@ -3,18 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <title>登录门户</title>
+    <script src="../js/jquery-3.3.1.js"></script>
 </head>
 <body>
-<h1>注册信息</h1>
-<div>
-    <span>姓名</span><input name="username">
-    <div>
-        <span>年龄</span><input name="age">
-    </div>
-    <div>
-        <span>手机号</span><input name="phone">
-    </div>
-</div>
 
+<h1>注册信息</h1>
+
+    <div>
+        <span>姓名</span><input id="username" name="username">
+        <div>
+            <span>年龄</span><input id= "age" name="age">
+        </div>
+        <div>
+            <span>手机号</span><input id="phone" name="phone">
+            <input type="button" id="button" value="注册">
+        </div>
+    </div>
+
+
+<script type="text/javascript">
+        $("#button").click(function(){
+            var username=$("#username").val();
+            if($.trim(username)==""){
+                alert("用户姓名不能为空！！！");
+                return;
+
+            }
+            var param ={
+                username:username,
+                age:$("#age").val(),
+                phone:$("#phone").val()
+
+            };
+            $.ajax({
+                "url": "http://localhost:8080/hello/log",
+                "contentType": "application/json;charset=UTF-8",
+                "data": JSON.stringify(param),
+                "type": "post",
+                "dataType": "json",
+                "success": function(result) {
+                    alert("注册成功！" + result.returnCode);
+                },
+                "error":function(json) {
+                    alert("注册失败！" + json.message);
+                }
+            });
+        });
+
+
+
+</script>
 </body>
+
 </html>
