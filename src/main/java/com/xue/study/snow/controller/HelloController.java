@@ -2,24 +2,33 @@ package com.xue.study.snow.controller;
 
 import com.xue.study.snow.dao.User;
 import com.xue.study.snow.service.HelloService;
+import com.xue.study.snow.service.SelectService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-@RestController
+@Controller
 @RequestMapping("/hello")
 public class HelloController {
     @Autowired
     private HelloService helloService;
+    @Autowired
+    private SelectService selectService;
 
     @RequestMapping("/use")
     public String hello() {
         return "hello";
+    }
+
+    @RequestMapping(method = RequestMethod.GET,value = "/poem")
+    public String poem(){
+        return "htmlStudy.html";
+
     }
 
     @RequestMapping(value = "/insert")
@@ -30,16 +39,27 @@ public class HelloController {
         map.put("phone", phone);
 
         helloService.insertUser(map);
-        return "注册成功";
+        return "redirect:/select/getUserByName?username="+map.get("username");
     }
-    @PostMapping
-    @RequestMapping(value = "/log")
-    public Map log(@RequestBody User user) {
+    @ResponseBody
+    @RequestMapping(value = "/log",method = RequestMethod.POST)
+    public Map log(@RequestBody User user)  throws Exception{
         Map<String, Object> map = new HashMap<String, Object>();
         Map<String, Object> maps = new HashMap<String, Object>();
-        map.put("username",user.getUsername());
-        map.put("age", user.getAge());
-        map.put("phone", user.getPhone());
+        String username= (String) user.getUsername();
+        int age = user.getAge();
+        String phone =user.getPhone();
+        map.put("username",username);
+        map.put("age",age);
+        map.put("phone", phone);
+        List<Map<String, Object>> list = selectService.getUserById(map);
+        if(list.size()>0){
+            maps.put("returnCode",0);
+            maps.put("returnMessage","该用户名已注册");
+            throw new Exception("该用户名已注册");
+
+        }
+
         helloService.insertUser(map);
         maps.put("returnCode",0);
         maps.put("returnMessage","成功");

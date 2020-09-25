@@ -2,10 +2,7 @@ package com.xue.study.snow.controller;
 
 import com.xue.study.snow.service.SelectService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,6 +23,15 @@ public class SelectController {
         list = selectService.getUserById(map);
         return list;
 
+    }
+    @GetMapping(value = "/getUserByName")
+    @ResponseBody
+    public List getgetUserById1(@RequestParam(value = "username" ) String name)throws Exception{
+        List<Map<String, Object>> list = new ArrayList<>();
+        Map<String, Object> map = new HashMap<>();
+        map.put("username", name);
+        list = selectService.getUserById(map);
+        return list;
     }
 
 

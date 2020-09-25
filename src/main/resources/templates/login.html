@@ -42,9 +42,9 @@
                 "type": "post",
                 "dataType": "json",
                 "success": function(result) {
-                    alert("注册成功！" + result.returnCode);
+                    alert("注册成功！" +result.message);
                 },
-                "error":function(json) {
+                "error":function(result) {
                     alert("注册失败！" + result.message);
                 }
             });

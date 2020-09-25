@@ -5,6 +5,15 @@ public class User {
     private int age;
     private String phone;
 
+    public User() {
+    }
+
+    public User(String username, int age, String phone) {
+        this.username = username;
+        this.age = age;
+        this.phone = phone;
+    }
+
     public String getUsername() {
         return username;
     }
