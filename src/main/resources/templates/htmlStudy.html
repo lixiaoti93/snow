@@ -8,11 +8,35 @@
     <script src="https://cdn.staticfile.org/jquery/2.0.0/jquery.min.js">
     </script>
     <script>
+        var i=0;
         $(function () {
-            $("#button").click(function () {
-                $("#123").hide();
+            $("#button").click(function () {//单次点击
+                $("#123").hide();//隐藏
+                $("p.just").hide();
+
 
             });
+            $("#123").dblclick(function (){//双击
+                alert("双击标题！！！");
+            });
+            $("#see").mouseenter(function(){//鼠标进入
+                $("#see").css("background-color","red");
+
+            });
+            $("#see").mouseleave(function(){//鼠标离开
+                $("#see").css("background-color","transparent");
+
+            });
+            $("#enter").keypress(function(){
+                $("span").text(i+=1);
+            });
+            $("#enter").change(function(){
+                alert("内容被修改！！！");
+            });
+            // $("#see").hover(function(){//鼠标停留
+            //     $("#see").css("background-color","yellow");},function(){
+            //     $("#see").css("background-color","green");
+            // });
 
         });
         // if(true){
@@ -27,7 +51,7 @@
 <imag />
     <p style="color:blue">赵客缦胡缨，吴钩霜雪明。</p>
     <p>银鞍照<em>白马</em>，&nbsp;飒沓如流星。</p>
-    <p>十步杀一人，&nbsp;千里不留行。</p>
+    <p id="see">十步杀一人，&nbsp;千里不留行。</p>
     <p>事了拂衣去，&nbsp;深藏身与名。</p>
     <p>闲过信陵饮，&nbsp;脱剑膝前横。</p>
     <p>将炙啖朱亥，&nbsp;持觞劝侯嬴。</p>
@@ -35,7 +59,7 @@
     <p>眼花耳热后，&nbsp;意气素霓生。</p>
     <p>救赵挥金槌，邯郸先震惊。</p>
     <p>千秋二壮士，烜赫大梁城。</p>
-    <p>纵死侠骨香，不惭世上英。</p>
+    <p class="just">纵死侠骨香，不惭世上英。</p>
     <p>谁能书阁下，白首太玄经。</p>
     <form action="/get" method="GET">
        请输入数值 <input type="number" min="18" max="48" step="4">
@@ -43,7 +67,9 @@
 
     </form>
     <form action="/get" method="GET">
-        请输入数值 <input type="date" name="date1">
+        请输入数值 <input type="text" name="date1" id="enter">
+        按键次数
+        <span>0</span>
         <input type="submit" value ="提交">
  
      </form>
