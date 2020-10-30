@@ -4,13 +4,20 @@ import com.lowagie.text.*;
 import com.lowagie.text.Font;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
+import com.xue.study.snow.bean.InputObject;
+import com.xue.study.snow.bean.OutputObject;
 import com.xue.study.snow.service.SelectService;
+import com.xue.study.snow.utils.JsonUtils;
 import com.xue.study.snow.view.PdfExportSerivce;
 import com.xue.study.snow.view.PdfView;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 
@@ -20,10 +27,28 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping(value = "/queryUser")
+@RequestMapping(value = "/query")
 public class UserController {
     @Autowired
     private SelectService selectService;
+
+
+
+
+    @ResponseBody
+    @RequestMapping(value = "/queryUserByName",method = RequestMethod.POST,produces = "application/json;charset=utf-8")
+    public OutputObject queryUser(@RequestBody String param) throws Exception{
+        InputObject inputObject = (InputObject) JsonUtils.transJsonStringToObject(param,InputObject.class);
+        OutputObject outputObject =new OutputObject();
+        selectService.queryUserByUsername(inputObject,outputObject);
+        return outputObject;
+
+
+
+    }
+
+
+
     @RequestMapping(value = "/selectUser", method = RequestMethod.GET)
     public ModelAndView exportPdf(String username) throws Exception {
         if (null == username || username.equals("")) {

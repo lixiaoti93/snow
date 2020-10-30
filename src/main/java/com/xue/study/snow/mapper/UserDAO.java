@@ -8,4 +8,5 @@ import java.util.Map;
 @Mapper
 public interface UserDAO {
     List<Map<String,Object>> getUserById(Map map);
+    List<Map<String,Object>> queryUserByName(Map map);
 }
