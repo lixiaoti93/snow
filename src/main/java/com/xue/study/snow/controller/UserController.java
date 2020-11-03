@@ -36,7 +36,7 @@ public class UserController {
 
 
     @ResponseBody
-    @RequestMapping(value = "/queryUserByName",method = RequestMethod.POST,produces = "application/json;charset=utf-8")
+    @RequestMapping(value = "/queryUserByName",method = RequestMethod.POST)
     public OutputObject queryUser(@RequestBody String param) throws Exception{
         InputObject inputObject = (InputObject) JsonUtils.transJsonStringToObject(param,InputObject.class);
         OutputObject outputObject =new OutputObject();

@@ -6,6 +6,6 @@
       select username,age,phone from user where username = #{username}
     </select>
     <select id="queryUserByName" resultType="java.util.Map" parameterType="java.util.Map">
-        select id,username,age,phone,nickname,cmosmodifytime  from user where username like CONCAT('%',#{username},'%')
+        select id,username,age,phone,nickname,cmosmodifytime  from user where username like CONCAT('%',#{userName},'%')
     </select>
 </mapper>

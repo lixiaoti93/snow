@@ -27,13 +27,13 @@ public class SelectServiceImpl implements SelectService {
     }
 
     @Override
-    public List<Map<String, Object>> queryUserByUsername(InputObject inputObject, OutputObject outputObject) throws Exception {
-       Map param =inputObject.getParams();
-       if(null==param||param.isEmpty()){
-           throw new Exception("入参有错");
-       }
-       List list =userDAO.queryUserByName(param);
-       return list;
+    public void queryUserByUsername(InputObject inputObject, OutputObject outputObject) throws Exception {
+        Map param = inputObject.getParams();
+        if (null == param || param.isEmpty()) {
+            throw new Exception("入参有错");
+        }
+        List list = userDAO.queryUserByName(param);
+        outputObject.setBeans(list);
 
 
     }

@@ -10,6 +10,6 @@ public interface SelectService {
 
     List<Map<String,Object>> getUserById(Map map)throws Exception;
 
-    List<Map<String,Object>> queryUserByUsername(InputObject inputObject, OutputObject outputObject ) throws Exception;
+    public void queryUserByUsername(InputObject inputObject, OutputObject outputObject ) throws Exception;
 
 }
