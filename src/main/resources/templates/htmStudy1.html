@@ -3,14 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script  src="https://cdn.staticfile.org/jquery/2.0.0/jquery.min.js"></script>
+    <style type="text/css">
+        .import {
+            color: #98bf21;
+
+        }
+    </style>
+    <script src="https://cdn.staticfile.org/jquery/2.0.0/jquery.min.js"></script>
     <script>
-        $(function(){
-            $("#btn1").click(function(){
+        $(function () {
+            $("#btn1").click(function () {
                 alert($("a").attr("href"));
             });
-            $("#btn2").click(function(){
+            $("#btn2").click(function () {
                 alert($("#input1").val());
+            });
+            $("#btn3").click(function () {
+                $("#demo").append("<b>我出現了啊 </b>");//元素后添加
+
+            });
+            $("#btn4").click(function () {
+                $("#ol_1").prepend("<li>小妲己</li>");//元素前后添加
+            });
+            $("#remove_1").click(function () {//移除元素及其子元素
+                $("#ba").remove();
+            });
+            $("#remove_2").click(function () {//移除子元素
+                $("#li").empty();
+            });
+            $("#remove_3").click(function () {//移除子元素
+                $("#dun").empty("b");
+            });
+            $("#btn0").click(function () {
+                $("button").addClass("import")
+            });
+            $("#btn11").click(function () {
+                $("button").removeClass("import");
+            });
+            $("#btn12").click(function () {
+                $("button").toggleClass("import");
+            });
+            $("#btn13").click(function () {
+                var show;
+                show = $("#input1").css("color");
+                alert(show);
+                $("#input1").css("background-color","yellow");
+            });
+            $("#btn14").click(function () {
+                var txt ="";
+                txt+="盒子宽度为："+$("#div1").width()+"<br>";
+                txt+="盒子高度为："+$("#div1").height()+"<br>";
+                txt+="盒子宽度为(包括内边距)："+$("#div1").innerWidth()+"<br>";
+                txt+="盒子高度为(包括内边距)："+$("#div1").innerHeight();
+                $("#div1").html(txt);
             });
         });
 
@@ -18,9 +63,29 @@
 </head>
 <body>
 <p><a href="www.baidu.com">链接地址</a></p>
-<button id="btn1">获取href信息</button><br>
-<input id="input1" type="text">
+<button id="btn1">获取href信息</button>
+<br>
+<input id="input1" type="password" style="color: blue;">
 <button id="btn2">获取输入值</button>
-
+<br>
+<p id="demo"></p>
+<ol id="ol_1">
+    <li id="ba"><b>一个</b>小百里</li>
+    <li id="li"><b>一个</b>小守约</li>
+    <li id="dun"><b>一个</b>盾山</li>
+</ol>
+<button id="btn3">出现文本</button>
+<button id="btn4">新增列表</button>
+<button id="remove_1">移除小百里</button>
+<button id="remove_2">移除小守约</button>
+<button id="remove_3">移除小盾山</button>
+<br>
+<button id="btn0">上色</button>
+<button id="btn11">去色</button>
+<button id="btn12">切换色</button>
+<br>
+<button id="btn13"> 获取输入框的样式值</button>
+<div id="div1" style="width: 300px;height: 100px;color:red;padding: 10px;margin:5px;border: 2px solid green;"></div>
+<button id ="btn14">获得盒子模型数据</button>
 </body>
 </html>
