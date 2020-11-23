@@ -7,12 +7,19 @@ import com.xue.study.snow.service.IncomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 @Service
 public class IncomeServiceImpl implements IncomeService {
     @Autowired
     private UserDAO userDAO;
+
+    /**
+     * 插入麻将输赢钱数
+     * @param inputObject
+     * @param outputObject
+     */
     @Override
     public void insertIncome(InputObject inputObject, OutputObject outputObject) {
         Map map = inputObject.getParams();
@@ -25,7 +32,17 @@ public class IncomeServiceImpl implements IncomeService {
             outputObject.setReturnMessage("数据入库失败！！！");
 
         }
+    }
 
-
+    /**
+     * 查询麻将输赢金额
+     * @param inputObject
+     * @param outputObject
+     */
+    @Override
+    public void queryIncome(InputObject inputObject, OutputObject outputObject) {
+        Map<String,Object> map =inputObject.getParams();
+        List<Map<String,Object>> list =userDAO.queryIncome();
+        outputObject.setBeans(list);
     }
 }

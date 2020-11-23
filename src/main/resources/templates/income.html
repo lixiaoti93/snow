@@ -11,19 +11,30 @@
     <input id="date" type="date">
     <input id="money" type="number">
     <button id="btn1">提交</button>
+    <button id="btn2">查询明细</button>
 </div>
+
+<table>
+    <thead >
+    <tr>
+        <th>序号</th>
+        <th>金额</th>
+        <th>日期</th>
+    </tr>
+    </thead>
+    <tbody ></tbody>
+</table>
 </body>
 <script>
     $("#btn1").click(function(){
         var date=$("#date").val();
-        alert("!@!!!!!");
         if($.trim(date)==""){
             alert("请输入日期！！！");
             return;
         }
         var param ={
-            ammount:$("#money").val(),
-            cmosmodifytime:date
+            income:$("#money").val(),
+            date:date
 
         };
         $.ajax({
@@ -33,10 +44,37 @@
             "type": "post",
             "dataType": "json",
             "success": function(result) {
-                alert("注册成功！" +result.message);
+                alert("注册成功！" +result.returnMessage);
             },
             "error":function(result) {
-                alert("注册失败！" + result.message);
+                alert("注册失败！" + result.returnMessage);
+            }
+        });
+    });
+    $("#btn2").click(function(){
+        var param ={
+            income:$("#money").val(),
+            date:date
+        };
+
+        $.ajax({
+            "url": "/income/queryIncome",
+            "contentType": "application/json;charset=UTF-8",
+            "data": JSON.stringify(param),
+            "type": "post",
+            "dataType": "json",
+            "success": function(result) {
+               var beans = result.beans;
+               var trs ="";
+               for(var i=0;i<beans.length;i++){
+                   var bean =beans[i];
+                   trs+="<tr><td>"+(i+1)+"</td><td>"+bean.amount+"</td><td>"+bean.cmosmodifytime+"</td></tr>"
+               }
+               $("tbody").html(trs);
+
+            },
+            "error":function(result) {
+                alert("查询失败！" + result.returnMessage);
             }
         });
     });

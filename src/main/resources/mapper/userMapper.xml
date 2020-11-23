@@ -14,4 +14,8 @@
     <insert id="insertIncome"  parameterType="java.util.Map">
         insert into income_table (amount,cmosmodifytime) values(#{income},#{date})
     </insert>
+    <select id="queryIncome" resultType="java.util.Map" >
+        select id,amount,cmosmodifytime from income_table where 1=1
+
+    </select>
 </mapper>

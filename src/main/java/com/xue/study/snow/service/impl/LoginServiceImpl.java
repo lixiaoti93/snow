@@ -10,4 +10,9 @@ public class LoginServiceImpl implements LoginService {
     public String login() {
         return "login.html";
     }
+
+    @Override
+    public String income() {
+        return "income.html";
+    }
 }

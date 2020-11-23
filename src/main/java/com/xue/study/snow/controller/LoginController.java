@@ -23,6 +23,10 @@ public class LoginController {
     public String login() {
         return loginService.login();
     }
+    @RequestMapping("/income")
+    public String income(){
+        return loginService.income();
+    }
 
     @ResponseBody
     @RequestMapping("/sing")
