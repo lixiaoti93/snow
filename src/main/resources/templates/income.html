@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>income变动</title>
+    <script src="https://cdn.staticfile.org/jquery/2.0.0/jquery.min.js"></script>
+
+</head>
+<body>
+<div>
+    <input id="date" type="date">
+    <input id="money" type="number">
+    <button id="btn1">提交</button>
+</div>
+</body>
+<script>
+    $("#btn1").click(function(){
+        var date=$("#date").val();
+        alert("!@!!!!!");
+        if($.trim(date)==""){
+            alert("请输入日期！！！");
+            return;
+        }
+        var param ={
+            ammount:$("#money").val(),
+            cmosmodifytime:date
+
+        };
+        $.ajax({
+            "url": "http://localhost:8080/income/insertIncome",
+            "contentType": "application/json;charset=UTF-8",
+            "data": JSON.stringify(param),
+            "type": "post",
+            "dataType": "json",
+            "success": function(result) {
+                alert("注册成功！" +result.message);
+            },
+            "error":function(result) {
+                alert("注册失败！" + result.message);
+            }
+        });
+    });
+
+</script>
+</html>

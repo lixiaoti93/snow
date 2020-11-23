@@ -11,8 +11,6 @@ import com.xue.study.snow.utils.JsonUtils;
 import com.xue.study.snow.view.PdfExportSerivce;
 import com.xue.study.snow.view.PdfView;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

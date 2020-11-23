@@ -8,4 +8,10 @@
     <select id="queryUserByName" resultType="java.util.Map" parameterType="java.util.Map">
         select id,username,age,phone,nickname,cmosmodifytime  from user where username like CONCAT('%',#{userName},'%')
     </select>
+    <select id="querySalaryByUsername" resultType="java.util.Map" parameterType="java.util.Map">
+        select m.username,m.age,m.phone,n.salary  from  user m left join  usersalary n on m.username = n.username where m.username =#{userName}
+    </select>
+    <insert id="insertIncome"  parameterType="java.util.Map">
+        insert into income_table (amount,cmosmodifytime) values(#{income},#{date})
+    </insert>
 </mapper>
