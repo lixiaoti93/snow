@@ -14,4 +14,5 @@ public interface UserDAO {
     List<Map<String,Object>> querySalaryByUsername(Map map);
     int insertIncome(Map map);
     List<Map<String,Object>> queryIncome();
+    List<Map<String,Object>> exportStaffId(Map map);
 }

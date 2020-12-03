@@ -11,11 +11,24 @@
     <select id="querySalaryByUsername" resultType="java.util.Map" parameterType="java.util.Map">
         select m.username,m.age,m.phone,n.salary  from  user m left join  usersalary n on m.username = n.username where m.username =#{userName}
     </select>
-    <insert id="insertIncome"  parameterType="java.util.Map">
+    <insert id="insertIncome" parameterType="java.util.Map">
         insert into income_table (amount,cmosmodifytime) values(#{income},#{date})
     </insert>
-    <select id="queryIncome" resultType="java.util.Map" >
+    <select id="queryIncome" resultType="java.util.Map">
         select id,amount,cmosmodifytime from income_table where 1=1
+
+    </select>
+    <select id="exportStaffId" resultType="java.util.Map" parameterType="java.util.Map">
+        select staffId,staffName,staffState,staffIdstatus from t_ucp_staffbasicinfo
+        <where>
+            1=1
+            <if test="staffId!=null and staffId!=''">
+            and staffId = #{staffId}
+            </if>
+            <if test="staffName!=null">
+                and staffName like CONCAT(#{staffName},'%')
+            </if>
+        </where>
 
     </select>
 </mapper>

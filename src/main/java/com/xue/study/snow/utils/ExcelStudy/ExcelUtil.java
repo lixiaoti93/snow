@@ -10,7 +10,7 @@ import java.io.FileOutputStream;
 
 public class ExcelUtil {
     public static void main(String[] args) throws Exception {
-        Workbook wb = new HSSFWorkbook();//创建一个工作蒲
+        Workbook wb = new HSSFWorkbook();//创建一个工作簿
         Sheet hssfSheet = wb.createSheet("li");//创建一个sheet页
         Row row =hssfSheet.createRow(0);//创建一个行
         Cell cell =row.createCell(0);//创建一个单元格 第一列
