@@ -5,9 +5,7 @@ import com.xue.study.snow.bean.OutputObject;
 import com.xue.study.snow.mapper.UserDAO;
 import com.xue.study.snow.service.ExcelService;
 import com.xue.study.snow.utils.StringUtils;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.usermodel.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,8 +37,30 @@ public class ExcelServiceImpl implements ExcelService {
         //创建一个sheet页
         HSSFSheet hssfSheet = workbook.createSheet(sheetName);
         HSSFRow row =hssfSheet.createRow(0);
+        //创建单元格样式
+        HSSFCellStyle style =workbook.createCellStyle();
         int cellNumber =0;
+        //写第一行数据
         while(iterator.hasNext()){
+            HSSFCell cell =row.createCell(cellNumber);
+            cell.setCellValue(iterator.next());
+            cellNumber++;
+
+        }
+        //循环写数据
+        for(int i=1;i<list.size();i++){
+            row =hssfSheet.createRow(i);
+            titleMap=list.get(i);
+           Collection collection=titleMap.values();
+           Iterator<String> iterator1 =collection.iterator();
+            int num =0;
+            while(iterator1.hasNext()){
+                HSSFCell cell =row.createCell(num);
+                cell.setCellValue(iterator1.next());
+                num++;
+
+            }
+
 
         }
         OutputStream outputStream =response.getOutputStream();//获得输出流
@@ -61,8 +81,15 @@ public class ExcelServiceImpl implements ExcelService {
      */
     public void queryStaffId(InputObject inputObject, OutputObject outputObject) throws Exception{
         Map<String,Object> maps = inputObject.getParams();
-        String staffId =String.valueOf(maps.get("staffId"));
-        String staffName =String.valueOf(maps.get("staffName"));
+        String staffId="";
+        String staffName="";
+        if(null!= maps.get("staffId")){
+             staffId =(String)maps.get("staffId");
+        }
+        if(null!= maps.get("staffName")){
+            staffName=(String)maps.get("staffName");
+        }
+
         if(StringUtils.isEmpty(staffId)&&StringUtils.isEmpty(staffName)){
             throw new Exception("staffId 和staffName不能同时为空");
         }

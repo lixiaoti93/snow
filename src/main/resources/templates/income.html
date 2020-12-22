@@ -13,6 +13,9 @@
     <input id="money" type="number">
     <button id="btn1">提交</button>
     <button id="btn2">查询明细</button>
+    <button id="queryCount">总额</button>
+    <input class="count" type="number" disabled="disabled">次
+    <input class="countMoney" type="number" disabled="disabled">元
 </div>
 
 <table>
@@ -91,7 +94,7 @@
     //     a.click();
     // });
     $('#excel').bind("click", function () {
-        var httpMethod = 'post';
+        var httpMethod = 'get';
         var url = "http://localhost:8080/file/excelDown";
         var params = {
             staffId: $("#staffId").val(),
@@ -110,6 +113,24 @@
             },
             failCallback: function (html, url) {
                 console.log("导出失败");
+            }
+        });
+    });
+    $("#queryCount").click(function(){
+
+        $.ajax({
+            "url": "/income/queryCountMoney",
+            "contentType": "application/json;charset=UTF-8",
+            "data":"",
+            "type": "get",
+            "dataType": "json",
+            "success": function(result) {
+                var count = result.bean.count;
+                $(".count").val(count);
+                $(".countMoney").val(result.bean.countMoney);
+            },
+            "error":function(result) {
+                alert("查询失败！" + result.returnMessage);
             }
         });
     });

@@ -33,6 +33,13 @@ public class IncomeController {
         return outputObject;
 
     }
+
+    /**
+     * 查询majiang金额
+     * @param params
+     * @return
+     * @throws Exception
+     */
     @RequestMapping(value = "/queryIncome",method = RequestMethod.POST)
     public OutputObject queryIncome(@RequestBody String params) throws Exception {
         InputObject inputObject = new InputObject();
@@ -46,6 +53,13 @@ public class IncomeController {
         incomeService.queryIncome(inputObject,outputObject);
         return outputObject;
 
+    }
+    @RequestMapping(value = "/queryCountMoney",method = RequestMethod.GET)
+    public OutputObject queryCount(){
+        InputObject inputObject = new InputObject();
+        OutputObject outputObject = new OutputObject();
+        incomeService.queryCount(inputObject,outputObject);
+        return outputObject;
     }
 
 }

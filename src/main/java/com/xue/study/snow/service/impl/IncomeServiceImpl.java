@@ -7,6 +7,7 @@ import com.xue.study.snow.service.IncomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -35,7 +36,7 @@ public class IncomeServiceImpl implements IncomeService {
     }
 
     /**
-     * 查询麻将输赢金额
+     * 查询麻将输赢金额清单
      * @param inputObject
      * @param outputObject
      */
@@ -44,5 +45,19 @@ public class IncomeServiceImpl implements IncomeService {
         Map<String,Object> map =inputObject.getParams();
         List<Map<String,Object>> list =userDAO.queryIncome();
         outputObject.setBeans(list);
+    }
+    /**
+     * 查询打麻将输赢总金额
+     * @param inputObject
+     * @param outputObject
+     */
+    @Override
+    public void queryCount(InputObject inputObject, OutputObject outputObject) {
+        Map<String,Object> maps =new HashMap<>();
+        int count=userDAO.queryCount();
+        int countMoney=userDAO.queryMoney();
+        maps.put("count",count);
+        maps.put("countMoney",countMoney);
+        outputObject.setBean(maps);
     }
 }

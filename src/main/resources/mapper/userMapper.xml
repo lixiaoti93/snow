@@ -15,7 +15,7 @@
         insert into income_table (amount,cmosmodifytime) values(#{income},#{date})
     </insert>
     <select id="queryIncome" resultType="java.util.Map">
-        select id,amount,cmosmodifytime from income_table where 1=1
+        select id,amount,cmosmodifytime from income_table where 1=1 order by cmosmodifytime asc
 
     </select>
     <select id="exportStaffId" resultType="java.util.Map" parameterType="java.util.Map">
@@ -31,4 +31,11 @@
         </where>
 
     </select>
+    <select id="queryCount" resultType="java.lang.Integer">
+        select count(amount) from income_table
+    </select>
+    <select id="queryMoney" resultType="java.lang.Integer">
+        select SUM(amount) from income_table
+    </select>
 </mapper>
+
