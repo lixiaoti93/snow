@@ -1,5 +1,7 @@
 package com.xue.study.snow.controller;
 
+import com.xue.study.snow.bean.InputObject;
+import com.xue.study.snow.bean.OutputObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +13,10 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.security.GeneralSecurityException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -91,6 +96,28 @@ public class FileController {
 
         }
         return dealResultMap(true,"上传成功");
+
+    }
+
+
+    @PostMapping("/upload/excelImport")
+    @ResponseBody
+    public void  excelImport(HttpServletRequest request, InputObject inputObject, OutputObject outputObject)throws Exception{
+        boolean flag =false;
+        MultipartHttpServletRequest mreq=null;
+        //强制转换为MultipartHttpServletRequest接口对象
+        if(request instanceof MultipartHttpServletRequest){
+            mreq =(MultipartHttpServletRequest) request;
+        }else{
+            throw new Exception("文件上传失败！！！");
+        }
+        //获取MultipartFile文件信息
+        MultipartFile mf =mreq.getFile("file");
+        //获取源文件名称
+        String fileName =mf.getOriginalFilename();
+        InputStream ins =new FileInputStream(fileName);
+        //TODO 解析excel
+
 
     }
 
