@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>静态方法和实例方法</title>
+    <script src="C:\Program Files\work\ideaProgram\snow\src\main\resources\static\js\jquery-3.3.1.js"></script>
+    <script>
+        /**
+         * 定义一个类
+         * @constructor
+         */
+        function AClass(){
+
+        }
+
+        /**
+         * 给类加一个静态方法
+         * 直接给类的方法就是静态方法
+         */
+        AClass.staticMethod=function(){
+            alert("staticMethod");
+        }
+        //静态方法通过类名调用
+        AClass.staticMethod();
+        //给类加一个实例方法
+        AClass.prototype.instanceMethod=function(){
+            alert("instanceMethod方法");
+        }
+        //创建一个对象调用实例方法
+        var a =new AClass();
+        a.instanceMethod();
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

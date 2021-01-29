@@ -1,17 +1,36 @@
 package com.xue.study.snow.utils;
 
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Workbook;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Count {
-    public static void main(String[] args) {
-        List<Integer> list = new ArrayList();
-        int add =308501;
-        for(int i=0;i<=2799;i++){
-            list.add(add+i);
+    public static void main(String[] args) throws IOException {
+        Workbook wb = new HSSFWorkbook();
+        HSSFSheet sheet =((HSSFWorkbook) wb).createSheet("fenjihao");
+        FileOutputStream fos =new FileOutputStream("c:\\分机号数据.xls");
 
+        int add =389890901;
+        int result=0;
+        for(int i=0;i<=999;i++){
+            result=add+i;
+            HSSFCell cell =sheet.createRow(i).createCell(0);
+            cell.setCellValue(String.valueOf(result));
         }
-        System.out.println(list);
+        ((HSSFWorkbook) wb).write(fos);
+        fos.close();
+        int a=0;
+        int b=1;
+
+
 
 
     }

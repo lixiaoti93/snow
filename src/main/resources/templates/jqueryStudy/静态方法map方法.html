@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>静态方法的each方法</title>
+    <script src="C:\Program Files\work\ideaProgram\snow\src\main\resources\static\js\jquery-3.3.1.js"></script>
+    <script>
+        var arr = [1, 2, 3, 4, 5];
+        var arrt = {0: 1, 1: 2, 3: 4};
+        /**
+         * 第一个参数：遍历到的元素
+         * 第二个参数：当前遍历的索引
+         * 第三个参数：当前被遍历的数组
+         * 注意点：原生的forEach只能遍历数组，不能遍历伪数组
+         */
+        // arr.map(function(value, index,arr){
+        //     console.log(index,value,arr);
+        // });
+        /*注意点
+        第一个参数：当前遍历的数组
+        第二个参数：每遍历一个元素之后执行的回调方法
+          回调方法：参数一：遍历到的元素
+                    参数一：当前遍历的索引
+
+
+        注意点：jQuery的map方法是可以遍历伪数组的
+         */
+        $.map(arr, function (value, index) {
+            console.log(index, value);
+        })
+
+        var res1 = $.map(arr, function (value, index) {
+            console.log(index, value);
+            return value+index;
+        })
+        var res2 = $.each(arrt, function (index, value) {
+            console.log(index, value);
+        })
+        /*
+        jQuery中的each静态方法和map方法的区别
+        each静态方法默认返回值：遍历谁返回谁
+        map静态方法默认的返回值是一个空数组
+
+        each静态方法不支持回调函数中对遍历的数组进行处理
+        map方法可以在回调函数中通过return对遍历数组进行处理，然后生成一个新的数组返回
+
+         */
+        console.log(res1);
+        console.log(res2);
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

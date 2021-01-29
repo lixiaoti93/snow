@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>11-jquery中的其他静态方法</title>
+    <script src="C:\Program Files\work\ideaProgram\snow\src\main\resources\static\js\jquery-3.3.1.js"></script>
+    <script>
+        var str=" 123 ";
+        /*
+        $.trim()
+        参数：需要去除空格的字符串
+        返回值：去除了空格后的字符串
+
+         */
+        var scc=$.trim(str);
+        console.log("---"+str+"---");
+        console.log("---"+scc+"---");
+        var w =window;
+        /*
+        $.isWindow() 判断对象是不是window对象
+        返回值： true /false
+         */
+        var result =$.isWindow(w);
+        console.log("是不是window对象 "+result);
+
+        var arr =[1,2,3,4,4];
+        var res1=$.isArray(arr);
+        console.log("是不是数组 "+res1);
+        var fn =function(){};
+        var res2=$.isFunction(fn);;
+        console.log("是不是方法:"+(res2? "是":"不是"));
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
