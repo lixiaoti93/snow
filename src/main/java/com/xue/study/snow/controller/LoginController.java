@@ -1,5 +1,6 @@
 package com.xue.study.snow.controller;
 
+import com.xue.study.snow.service.ChargeMoneyService;
 import com.xue.study.snow.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,8 @@ import java.util.Map;
 public class LoginController {
     @Autowired
     private LoginService loginService;
+    @Autowired
+    private ChargeMoneyService chargeMoneyService;
 
     @RequestMapping("/login")
     public String login() {
@@ -26,6 +29,10 @@ public class LoginController {
     @RequestMapping("/income")
     public String income(){
         return loginService.income();
+    }
+    @RequestMapping("/charge")
+    public String charge(){
+        return chargeMoneyService.charge();
     }
 
     @ResponseBody

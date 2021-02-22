@@ -40,7 +40,7 @@ public class ChargeMoneyServiceImpl implements ChargeMoneyService {
     }
 
     /**
-     * 计算每个房间应付的金额
+     * 计算每个房间应付的金额,并更新数据库payMoney数据
      * @param inputObject
      * @param outputObject
      */
@@ -61,8 +61,12 @@ public class ChargeMoneyServiceImpl implements ChargeMoneyService {
             Map<String,Object> map1=list.get(i);
             map1.put("payMoney",dayOfMoney.multiply(new BigDecimal(String.valueOf(map1.get("days")))));
         }
+        chargeDAO.updateChargeMoney(params);
 
+    }
 
-
+    @Override
+    public String charge() {
+        return "chargeMoney.html";
     }
 }

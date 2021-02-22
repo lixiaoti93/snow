@@ -14,4 +14,5 @@ import java.util.Map;
 public interface ChargeDAO {
     int insertDays(Map map);
     List<Map<String,Object>> queryRoomAndMoney(Map map);
+    int updateChargeMoney(Map map);
 }

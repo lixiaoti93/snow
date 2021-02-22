@@ -7,5 +7,6 @@ public interface ChargeMoneyService {
     void queryChargeMoney(InputObject inputObject, OutputObject outputObject);
     void insertRoomDays(InputObject inputObject,OutputObject outputObject);
     void computeRoomMoney(InputObject inputObject,OutputObject outputObject);
+    String charge();
 
 }
