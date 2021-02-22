@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>电费计算</title>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery.fileDownload/1.4.2/jquery.fileDownload.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/2.0.0/jquery.min.js"></script>
+
+</head>
+<body>
+<div>
+
+    <button id="queryCount">电费总额</button>
+    <input class="count" type="number" disabled="disabled">次
+    <input class="countMoney" type="number" disabled="disabled">元
+</div>
+
+<table>
+    <thead >
+    <tr>
+        <th>序号</th>
+        <th>金额</th>
+        <th>日期</th>
+    </tr>
+    </thead>
+    <tbody ></tbody>
+
+</table>
+
+</body>
+<script>
+    $("#btn2").click(function(){
+        var param ={
+            income:$("#money").val(),
+            date:date
+        };
+
+        $.ajax({
+            "url": "/income/queryIncome",
+            "contentType": "application/json;charset=UTF-8",
+            "data": JSON.stringify(param),
+            "type": "post",
+            "dataType": "json",
+            "success": function(result) {
+               var beans = result.beans;
+               var trs ="";
+               for(var i=0;i<beans.length;i++){
+                   var bean =beans[i];
+                   trs+="<tr><td>"+(i+1)+"</td><td>"+bean.amount+"</td><td>"+bean.cmosmodifytime+"</td></tr>"
+               }
+               $("tbody").html(trs);
+
+            },
+            "error":function(result) {
+                alert("查询失败！" + result.returnMessage);
+            }
+        });
+    });
+
+
+
+
+</script>
+</html>

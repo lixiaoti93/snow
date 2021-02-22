@@ -18,9 +18,9 @@ public class Count {
         HSSFSheet sheet =((HSSFWorkbook) wb).createSheet("fenjihao");
         FileOutputStream fos =new FileOutputStream("c:\\分机号数据.xls");
 
-        int add =389890901;
+        int add =310013000;
         int result=0;
-        for(int i=0;i<=999;i++){
+        for(int i=0;i<=2000;i++){
             result=add+i;
             HSSFCell cell =sheet.createRow(i).createCell(0);
             cell.setCellValue(String.valueOf(result));
