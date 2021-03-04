@@ -4,16 +4,26 @@
     <meta charset="UTF-8">
     <title>12-静态方法holdReady方法</title>
     <script src="../../static/js/jquery-3.3.1.js"></script>
+    <script>
+        //$.holdReady(true) 作用，暂停ready执行
+        $.holdReady(true);
+        $(document).ready(function(){
+
+            alert("Im ready");
+        });
+    </script>
 
 </head>
 <body>
 <button>回复ready事件</button>
+<button>123</button>
 
 </body>
 <script>
-    var btn =document.getElementsByTagName("button")[0];
+    var btn =document.getElementsByTagName("button")[1];
     btn.onclick=function () {
-        alert("btn");
+        // alert("btn");
+        $.holdReady(false);
     }
 
 </script>

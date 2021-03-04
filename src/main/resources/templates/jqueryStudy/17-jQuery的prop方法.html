@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>prop方法</title>
+    <script src="../../static/js/jquery-3.3.1.js"></script>
+        <script>
+            $(function(){
+                /**
+                 * prop(name|properties|key,value|fn
+                 * 获取在匹配的元素集中的第一个元素的属性值。
+                 * prop方法不仅能够操作属性，还能够操作属性节点
+                 * 官方推荐在操作属性节点的时候具有true和fasle两个属性的属性节点，使用prop()，其他的使用attr()
+                 */
+                $("span").eq(0).prop("demo","123");
+                $("span").eq(1).prop("demo","456");
+                console.log($("span").prop("demo"));
+
+                /**
+                 * removeProp(name)
+                 * 特点和removeAttr一致
+                 * 用来删除由.prop()方法设置的属性集
+                 */
+            });
+        </script>
+</head>
+<body>
+<span class="span1"></span>
+<span class="span2"></span>
+</body>
+</html>

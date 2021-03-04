@@ -28,5 +28,6 @@ public class EnumDemo {
             System.out.println(EnumDemo_A.values()[i].getDescripation());
         }
         System.out.println(EnumDemo_A.valueOf("Strug_C").getI());
+
     }
 }

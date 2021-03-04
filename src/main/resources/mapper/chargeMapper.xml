@@ -13,11 +13,11 @@
             update chargemoney
             <set >
                 <if test="item.payMoney != null" >
-                    payMoney = #{item.payMoney},
-                </if>
+                    payMoney = #{item.payMoney}
+               </if>
 
             </set>
-            where id = #{item.room}
+            where room = #{item.room}
         </foreach>
     </update>
 
