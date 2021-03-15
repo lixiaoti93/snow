@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>折叠菜单</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .nav{
+            list-style: none;
+            width: 300px;
+            margin: 100px auto;
+        }
+        .nav>li{
+            border: 1px solid #000;
+            line-height: 35px;
+            border-bottom: none;
+            text-indent: 2cm;
+
+        }
+        .nav>li:last-child{
+            border-bottom:1px solid #000;
+            border-bottom-right-radius:10px;
+            border-bottom-left-radius:10px;
+        }
+        .nav>li:first-child{
+            border-top-right-radius:10px;
+            border-top-left-radius:10px;
+        }
+        .sub{
+            display: none;
+        }
+        .sub>li{
+            list-style: none;
+            background: mediumvioletred;
+            border-bottom: 1px solid white;
+        }
+        .sub>li:hover{
+            background: orange;
+        }
+    </style>
+    <script src="../../static/js/jquery-3.3.1.js"></script>
+        <script>
+            $(function(){
+                //监听一级菜单点击事件
+                $(".nav>li").click(function () {
+                    //点击的一级菜单所拥有的的二级菜单展开
+                    var sub=$(this).children(".sub");//获取二级菜单对象
+                    sub.slideDown(1000);
+                    //其他一级菜单拥有的二级菜单折叠起来
+                    var other =$(this).siblings().children(".sub");
+                    console.log(other);
+                    other.slideUp(1000);
+
+
+                });
+            });
+        </script>
+</head>
+<body>
+<ul class="nav">
+    <li>一级菜单
+        <ul class="sub">
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+        </ul></li>
+    <li>一级菜单
+        <ul class="sub">
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+        </ul></li>
+    <li>一级菜单
+        <ul class="sub">
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+        </ul></li>
+    <li>一级菜单
+        <ul class="sub">
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+        </ul></li>
+    <li>一级菜单
+        <ul class="sub">
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+        </ul></li>
+    <li>一级菜单
+        <ul class="sub">
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+        </ul></li>
+    <li>一级菜单
+        <ul class="sub">
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+        </ul></li>
+    <li>一级菜单
+        <ul class="sub">
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+        </ul></li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件冒泡</title>
+    <style>
+        .father{
+            width: 400px;
+            height:400px;
+            background: yellow;
+        }
+        .son{
+            width:200px;
+            height:200px;
+            background: red;
+        }
+    </style>
+    <script src="../../static/js/jquery-3.3.1.js"></script>
+        <script>
+            $(function(){
+                $(".father").click(function () {
+                    alert("father");
+                });
+                $(".son").click(function () {
+                    alert("son");
+                    return false;//阻止冒泡事件
+
+                });
+                $("a").click(function (event) {
+                    alert("a");
+                    event.preventDefault();//阻止默认事件
+
+                });
+            });
+        </script>
+</head>
+<body>
+<div class="father">
+    <div class="son"></div>
+</div>
+<a href="http://www.baidu.com">baidu</a>
+<form action="http://www.taobao.com">
+    <input type="text">
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>

@@ -54,12 +54,12 @@ public class ChargeMoneyServiceImpl implements ChargeMoneyService {
         for(Map map:list){
             countDays+=(int)map.get("days");
         }
-        BigDecimal b1= new BigDecimal(String.valueOf(countDays));//总天数
-        BigDecimal countMoney =(BigDecimal)(list.get(0).get("totalMoney"));//总金额
+        BigDecimal b1= new BigDecimal(countDays);//总天数
+        BigDecimal countMoney =new BigDecimal((String) list.get(0).get("totalMoney"));//总金额
         BigDecimal dayOfMoney =countMoney.divide(b1,2);
         for(int i=0;i<list.size();i++){
             Map<String,Object> map1=list.get(i);
-            map1.put("payMoney",dayOfMoney.multiply(new BigDecimal(String.valueOf(map1.get("days")))));
+            map1.put("payMoney",dayOfMoney.multiply(new BigDecimal(String.valueOf(map1.get("days")))).toString());
         }
         chargeDAO.updateChargeMoney(list);
 

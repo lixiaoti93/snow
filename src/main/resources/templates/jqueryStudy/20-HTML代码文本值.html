@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>20-HTML代码文本值</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        div {
+            width: 100px;
+            height:100px;
+            border: blue;
+        }
+    </style>
+    <script src="../../static/js/jquery-3.3.1.js"></script>
+    <script>
+        $(function () {
+            /**
+             *html([val|fn]) 取得第一个匹配元素的html内容。这个函数不能用于XML文档。但可以用于XHTML文档。
+             text([val|fn]) 取得所有匹配元素的内容。
+             val([val|fn|arr] )获得匹配元素的当前值
+             */
+
+            $("button").eq(0).click(function () {
+                $("div").html("<span>我是span</span>");
+            });
+            $("button").eq(1).click(function () {
+                console.log($("div").html());
+            });
+            $("button").eq(2).click(function () {
+                $("div").text("<span>我是span</span>");
+            });
+            $("button").eq(3).click(function () {
+                console.log($("div").text());
+            });
+            $("button").eq(4).click(function () {
+                $("input").val("input 的值");
+            });
+            $("button").eq(5).click(function () {
+                console.log($("input").val());
+            });
+        });
+    </script>
+</head>
+<body>
+<button>设置html</button>
+<button>获取html</button>
+<button>设置text</button>
+<button>获取text</button>
+<button>设置value</button>
+<button>获取val</button>
+<div></div>
+<input type="text">
+
+
+</body>
+</html>

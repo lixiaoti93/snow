@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>22-jQuery位置和尺寸操作的方法</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .father{
+            width: 200px;
+            height:200px;
+            background: red;
+            border: 50px solid #000;
+            margin-left:50px;
+            position: relative;
+
+        }
+        .son{
+            width: 50px;
+            height: 50px;
+            background: yellow;
+            position: absolute;
+            left: 50px;
+            top:50px;
+        }
+
+    </style>
+    <script src="../../static/js/jquery-3.3.1.js"></script>
+        <script>
+            $(function(){
+                /**
+                 * height([val|fn])  取得匹配元素当前计算的高度值（px）
+                 width([val|fn]) 取得第一个匹配元素当前计算的宽度值（px）
+                 innerHeight() 获取第一个匹配元素内部区域高度（包括补白、不包括边框）
+                 innerWidth() 获取第一个匹配元素内部区域宽度（包括补白、不包括边框）
+                 outerHeight([soptions]) 获取第一个匹配元素外部高度（默认包括补白和边框）
+                 outerWidth([options]) 获取第一个匹配元素外部宽度（默认包括补白和边框）
+                 offset([coordinates]) 获取匹配元素在当前视口的相对偏移
+                 position() 获取匹配元素相对父元素的偏移,只能获取不能设置
+                 scrollTop([val]) 获取匹配元素相对滚动条顶部的偏移
+                 scrollLeft([val]) 获取匹配元素相对滚动条左侧的偏移
+                 */
+                $("button").eq(0).click(function(){
+                    // console.log($(".father").width());
+                    // console.log("innerHeight"+$(".father").width());
+                    var abc =$(".father").offset();
+                    $("p").text("left: " + abc.left + ", top: " + abc.top);
+                });
+                $("button").eq(1).click(function(){
+                    // $(".son").width("100px");
+                    console.log($(".son").position());;
+                });
+
+
+            });
+        </script>
+</head>
+<body>
+<div class="father">
+    <div class="son"></div>
+</div>
+<button>获取</button>
+<button>设置</button>
+<p></p>
+
+</body>
+</html>

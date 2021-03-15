@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax-get</title>
+    <script src="../js/ajax.js"></script>
+    <script>
+        /**
+         * 1.什么是Ajax
+         * 不是新的编程语言，而是一种使用现有标准的新方法。
+
+         AJAX 是与服务器交换数据并更新部分网页的艺术，在不重新加载整个页面的情况下。
+         */
+        window.onload = function (ev) {
+            var btn =document.querySelector("button");
+            btn.onclick = function (ev1) {
+               ajax("http://localhost:8080/test/getDemo",function () {
+                   alert("请求成功！！！");
+
+                },function () {
+                   alert("请求失败！！！");
+               });
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+<button>ajax-get请求</button>
+</body>
+</html>

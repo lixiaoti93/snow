@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>操作类相关的方法</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .class1{
+            width: 50px;
+            height: 50px;
+            background: red;
+        }
+        .class2{
+            border: 10px solid #000;
+        }
+    </style>
+    <script src="../../static/js/jquery-3.3.1.js"></script>
+        <script>
+            $(function(){
+                /**
+                 * addClass(class|fn) 为每个匹配的元素添加指定的类名,多个用空格隔开
+                   removeClass([class|fn]) 从所有匹配的元素中删除全部或者指定的类。
+                    toggleClass(class|fn[,sw]) 如果存在（不存在）就删除（添加）一个类。
+                 */
+                var btn1=$("button").eq(0);
+                btn1.click(function(){
+                    $("div").addClass("class1 class2")
+                });
+                $("button").eq(1).click(function(){
+                    $("div").removeClass("class1 ");
+                });
+                $("button").eq(2).click(function(){
+                    $("div").toggleClass("class1 class2");
+                });
+
+            });
+        </script>
+</head>
+<body>
+<button>添加类</button>
+<button>删除类</button>
+<button >切换类</button>
+<div></div>
+
+</body>
+</html>

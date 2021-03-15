@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>删除节点</title>
+    <script src="../../static/js/jquery-3.3.1.js"></script>
+        <script>
+            $(function(){
+                $("button").eq(0).click(function () {
+                    $(".show").empty();
+                });
+                $("button").eq(1).click(function () {
+                    $(".show").remove();
+                });
+                $("button").eq(2).click(function () {
+                    $(".show").detach();
+                });
+            });
+        </script>
+</head>
+<body>
+<button>empty</button>
+<button>remove</button>
+<button>detach</button>
+<div class="show"><span class="n1">xianshi</span>
+    <span>yidong</span>
+</div>
+</body>
+</html>

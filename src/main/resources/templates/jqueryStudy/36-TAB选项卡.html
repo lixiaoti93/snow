@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TAB选项卡</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 440px;
+            height: 298px;
+            border: 1px solid #000;
+            margin: 50px auto;
+        }
+
+        .nav > li {
+            list-style: none;
+            width: 100px;
+            height: 50px;
+            background: orange;
+            text-align: center;
+            line-height: 50px;
+            float: left;
+        }
+
+        .nav > .current {
+            background: green;
+        }
+
+        .content > li {
+            list-style: none;
+            display: none;
+        }
+
+        .content > li.show {
+            display: block;
+        }
+
+    </style>
+    <script src="../../static/js/jquery-3.3.1.js"></script>
+    <script>
+        $(function () {
+            $(".nav>li").mouseenter(function () {
+                //修改移入选项卡的背景颜色
+                $(this).addClass("current");
+                //还原其他兄弟元素的样式
+                $(this).siblings().removeClass("current");
+                //获取当前移入选项卡的索引
+                var index = $(this).index();
+                console.log(index);
+                ///根据索引周到对应的图片
+                var $li = $(".content>li").eq(index);
+                $li.siblings().removeClass("show");
+                $li.addClass("show");
+
+            });
+            //
+            // $(".nav>li").mouseleave(function () {
+            //     $(this).removeClass("current");
+            //     //隐藏移除的选项卡的图片
+            //     // var index = $("this").index();
+            //     //  var $li = $(".content>li").eq(index);
+            //     //  $li.removeClass("show");
+            // });
+        });
+    </script>
+</head>
+<body>
+<div class="box">
+    <ul class="nav">
+        <li class="current">H5+Css</li>
+        <li>jQuery</li>
+        <li>C语言</li>
+        <li>Go语言</li>
+    </ul>
+    <ul class="content">
+        <li class="show"><img src="img/css.png" height="270" width="480"/></li>
+        <li><img src="img/jquery.png" height="270" width="480"/></li>
+        <li><img src="img/redis.png" height="270" width="480"/></li>
+        <li><img src="img/vue.png" height="270" width="480"/></li>
+    </ul>
+</div>
+
+</body>
+</html>

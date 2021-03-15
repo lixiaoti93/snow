@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>24-jQuery事件绑定</title>
+    <script src="../../static/js/jquery-3.3.1.js"></script>
+        <script>
+            $(function(){
+                $("button").click(function(){
+                    alert("heeill");
+
+                });
+                $("button").mouseenter(function () {
+                    alert("鼠标进入");
+                });
+                function abc(){
+                    alert("移除");
+                }
+                $("button").mouseleave(abc);
+                // $("button").off();//不穿参数，会移除所有的事件
+                $("button").off("mouseleave",abc);//传入两个参数会移除所有指定类型的指定方法
+
+            });
+        </script>
+</head>
+<body>
+<button>woshianniu</button>
+</body>
+</html>

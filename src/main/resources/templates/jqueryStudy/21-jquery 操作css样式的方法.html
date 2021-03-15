@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>21-jquery 操作css样式的方法</title>
+    <script src="../../static/js/jquery-3.3.1.js"></script>
+        <script>
+            $(function(){
+                $("button").click(function(){
+                    $("div").css("width","500px");
+                    $("div").css("height","400px")
+                    $("div").css({background:"red"});
+                    console.log($("div").css("height"));
+                });
+            });
+        </script>
+</head>
+<body>
+<button>设置div样式</button>
+<div></div>
+
+</body>
+</html>

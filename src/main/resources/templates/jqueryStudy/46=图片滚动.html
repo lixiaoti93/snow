@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片滚动</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 960px;
+            height: 270px;
+            border: 1px solid #000;
+            margin:100px auto;
+            overflow: hidden;
+        }
+        ul{
+            list-style: none;
+            width: 2880px;
+            height:270px;
+            background: rgba(0,0,0,0);
+        }
+        ul>li{
+            float: left;
+        }
+    </style>
+    <script src="../../static/js/jquery-3.3.1.js"></script>
+        <script>
+            $(function(){
+                //定义变量，保存偏移位
+                var offSet =0;
+                var timer;
+                function autoMove(){
+                    timer =setInterval(function () {
+                        offSet+=-10;
+                        $("ul").stop().css("marginLeft",offSet);
+                        if(offSet<=-1920){
+                            offSet =0;
+                        }
+
+                    },100);
+                }
+
+                //让图片滚起来
+                autoMove();
+                //监听 li移入移出
+                $("li").hover(function () {
+                    //停止滚动
+                    clearInterval(timer);
+                    //给其他图片添加蒙版
+                    $(this).siblings().fadeTo(100,0.5);
+                    //当前图片去除蒙版
+                    $(this).fadeTo(100,1);
+                },function () {
+                    //继续滚动
+                    autoMove();
+                    $("li").fadeTo(100,1);
+                });
+            });
+        </script>
+</head>
+<body>
+<div>
+    <ul>
+        <li><img src="img/css.png" alt=""></li>
+        <li><img src="img/jquery.png" alt=""></li>
+        <li><img src="img/redis.png" alt=""></li>
+        <li><img src="img/vue.png" alt=""></li>
+        <li><img src="img/css.png" alt=""></li>
+        <li><img src="img/jquery.png" alt=""></li>
+    </ul>
+</div>
+</body>
+</html>

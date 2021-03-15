@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>插入方法</title>
+    <script src="../../static/js/jquery-3.3.1.js"></script>
+    <script>
+        $(function () {
+            //TODO
+            var li = $("<li>新增</li>");
+            $("button").eq(0).click(function () {
+                $("ul").append(li);
+            });
+            $("button").eq(1).click(function () {
+                li.appendTo("ul");
+            });
+            $("button").eq(2).click(function () {
+                $("ul").prepend(li);
+            });
+            $("button").eq(3).click(function () {
+               li.prependTo("ul");
+            });
+            $("button").eq(4).click(function () {
+                $("ul").after(li);
+            });
+            $("button").eq(5).click(function () {
+                $("ul").before(li);
+            });
+
+
+        });
+    </script>
+</head>
+<body>
+<button>append</button>
+<button>appendTo</button>
+<button>prepend</button>
+<button>prependTo</button>
+<button>after</button>
+<button>before</button>
+<ul>
+    <li>测试</li>
+    <li>测试</li>
+    <li>测试</li>
+    <li>测试</li>
+</ul>
+
+
+</body>
+</html>
