@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>reactstudy2</title>
+    <script type="text/javascript" src="../../static/react/react.development.js"></script>
+    <script type="text/javascript" src="../../static/react/react-dom.development.js"></script>
+    <script type="text/javascript" src="../../static/react/babel.min.js"></script>
+
+
+</head>
+<body>
+<div id="test1"></div>
+<div id="test2"></div>
+<script type="text/javascript">
+    var msq='i love you';
+    var myId='A m teacher';
+    //这种创建虚拟DOM对象的方式基本不用
+    var vDom=React.createElement('h2',{id:msq.toLocaleLowerCase()},msq.toLocaleUpperCase());
+    var div1 =document.getElementById("test1");
+    debugger;
+    ReactDOM.render(vDom,document.getElementById('test1'));
+
+</script>
+
+<script type="text/babel">
+    const dom1=<h3 id={myId.toUpperCase()}>{msq.toLocaleLowerCase()}</h3>
+    ReactDOM.render(dom1,document.getElementById("test2"));
+</script>
+
+</body>
+</html>

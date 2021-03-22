@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>reactstudy2</title>
+    <script type="text/javascript" src="../../static/react/react.development.js"></script>
+    <script type="text/javascript" src="../../static/react/react-dom.development.js"></script>
+    <script type="text/javascript" src="../../static/react/babel.min.js"></script>
+
+
+</head>
+<body>
+<h2>前端JS框架列表</h2>
+<div id="example1"></div>
+
+<script type="text/babel">
+    /**
+     * 功能： 动态展示数据列表
+     */
+    const names=['jQeuery','zepto','angular','react','vue']
+    //创建虚拟DOM
+    const ul =(
+        <ul>
+            {names.map((name,index) => <li key={index}>{name}</li>)}
+        </ul>
+    )
+    ReactDOM.render(ul,document.getElementById('example1'))
+
+</script>
+</body>
+</html>
