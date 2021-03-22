@@ -15,8 +15,9 @@ public class TestController {
 
     @GetMapping(value = "/getDemo")
     @ResponseBody
-    public OutputObject testGet() throws JsonProcessingException {
+    public OutputObject testGet() throws JsonProcessingException, InterruptedException {
         OutputObject outputObject = new OutputObject();
+        Thread.sleep(5000);
         return outputObject;
 
     }
