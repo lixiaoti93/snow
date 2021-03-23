@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>refs和事件处理</title>
+    <script type="text/javascript" src="../../static/react/react.development.js"></script>
+    <script type="text/javascript" src="../../static/react/react-dom.development.js"></script>
+    <script type="text/javascript" src="../../static/react/babel.min.js"></script>
+
+
+</head>
+<body>
+<div id="example1"></div>
+<script type="text/babel">
+    class MyComponent extends React.Component{
+        constructor(props){
+          super(props);
+          this.showPut =this.showPut.bind(this);
+          this.handBlur=this.handBlur.bind(this);
+        }
+
+        showPut(){
+            const input=this.refs.content;
+            // alert(input.value);
+            alert(this.input.value)
+        }
+        handBlur(event){
+
+            alert(event.target.value)
+        }
+
+        render(){
+            return(
+                <div>
+                    <input type="text" ref="content"/>&nbsp;&nbsp;
+                    <input type="text" ref={input => this.input =input}/>&nbsp;&nbsp;
+                    <button onClick={this.showPut}>提示输入</button>&nbsp;&nbsp;
+                    <input type="text"  placeholder="失去焦点提示内容" onBlur={this.handBlur}/>
+                </div>
+            )
+        }
+    }
+    ReactDOM.render(<MyComponent/>,document.getElementById('example1'))
+</script>
+</body>
+</html>

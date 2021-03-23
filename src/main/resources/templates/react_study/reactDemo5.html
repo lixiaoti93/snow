@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>state状态属性</title>
+    <script type="text/javascript" src="../../static/react/react.development.js"></script>
+    <script type="text/javascript" src="../../static/react/react-dom.development.js"></script>
+    <script type="text/javascript" src="../../static/react/babel.min.js"></script>
+
+
+</head>
+<body>
+<div id="example"></div>
+<script type="text/babel">
+    /**
+     * 自定义组件，功能如下，点击后文字会发生改变
+     */
+    class Love extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                isLoveMe: false
+            }
+            this.handleClick = this.handleClick.bind(this);
+        }
+
+        //将新增方法的this强制绑定为组件对象
+
+
+        //修改状态方法 新添加方法：内部的this默认不是组件对象，而是undefined
+        handleClick() {
+            console.log('handleClick()', this);
+            const isLoveMe = !this.state.isLoveMe;
+            this.setState({isLoveMe});
+        }
+
+        render() {
+            //读取状态
+            const {isLoveMe} = this.state;
+            return <h1 onClick={this.handleClick}>{isLoveMe ? 'I Love You' : 'I Dont Love You'}</h1>
+        }
+    }
+
+    //渲染标签
+    ReactDOM.render(<Love/>, document.getElementById('example'));
+</script>
+</body>
+</html>

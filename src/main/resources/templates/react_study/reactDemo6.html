@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>props 属性</title>
+    <script type="text/javascript" src="../../static/react/react.development.js"></script>
+    <script type="text/javascript" src="../../static/react/react-dom.development.js"></script>
+    <script type="text/javascript" src="../../static/react/babel.min.js"></script>
+    <script src="../../static/react/prop-types.js"></script>
+
+
+</head>
+<body>
+<div id="example1"></div>
+<div id="example2"></div>
+<script type="text/babel">
+    class Person extends React.Component{
+        constructor(props){
+          super(props);
+
+        }
+
+        render(){
+            return(
+                <ul>
+                    <li>姓名：{this.props.name}</li>
+                    <li>年龄：{this.props.age}</li>
+                    <li>性别：{this.props.sex}</li>
+                </ul>
+            )
+        }
+    }
+    //指定属性默认值
+    Person.defaultProps={
+        age:14,
+        sex:'女'
+    }
+    //指定属性默认的类型
+    Person.propTypes={
+        name:PropTypes.string.isRequired,
+        age:PropTypes.number
+    }
+
+
+    const p1={
+        name:'李小逖',
+        age:18,
+        sex:'男'
+    }
+    const p2={
+        name:'李小二'
+    }
+    //ReactDOM.render(<Person name={p1.name} age={p1.age} sex={p1.sex}/>,document.getElementById('example1'));
+    ReactDOM.render(<Person{...p1}/>,document.getElementById('example1'));
+    ReactDOM.render(<Person name={p2.name}/>,document.getElementById('example2'));
+</script>
+</body>
+</html>
