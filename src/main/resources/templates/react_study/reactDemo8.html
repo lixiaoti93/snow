@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>refs和事件处理</title>
+    <script type="text/javascript" src="../../static/react/react.development.js"></script>
+    <script type="text/javascript" src="../../static/react/react-dom.development.js"></script>
+    <script type="text/javascript" src="../../static/react/babel.min.js"></script>
+
+
+</head>
+<body>
+<div id="example1"></div>
+<script type="text/babel">
+    function Victory() {
+        return <div>测试组件</div>;
+
+    }
+    class Clock extends React.Component{
+        constructor(props){
+          super(props);
+          this.state ={
+              date:new Date()
+          };
+        }
+        componentDidMount() {
+            this.timerID = setInterval(
+                () => this.tick(),
+                1000
+            );
+        }
+
+        componentWillUnmount() {
+            clearInterval(this.timerID);
+        }
+
+        tick() {
+            this.setState({
+                date: new Date()
+            });
+        }
+
+        render(){
+            return(
+                <div>
+                    <Victory/>
+                    <h1>你好世界</h1>
+                    <h2>{this.state.date.toLocaleTimeString()}</h2>
+                </div>
+            )
+        }
+    }
+    ReactDOM.render(<Clock/>,document.getElementById('example1'))
+</script>
+</body>
+</html>

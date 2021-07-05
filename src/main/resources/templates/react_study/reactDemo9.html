@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>refs和事件处理</title>
+    <script type="text/javascript" src="../../static/react/react.development.js"></script>
+    <script type="text/javascript" src="../../static/react/react-dom.development.js"></script>
+    <script type="text/javascript" src="../../static/react/babel.min.js"></script>
+
+
+</head>
+<body>
+<div id="example1"></div>
+<script type="text/babel">
+    class Father extends React.Component{
+        constructor(){
+            super();
+            this.state={
+                name:"我叫李小逖",
+                age:18
+            }
+        }
+
+        render(){
+            return (
+                <div>
+                    <Son name={this.state.name}></Son>
+                    <Daughter age ={this.state.age}></Daughter>
+                </div>
+            );
+        }
+    }
+    class Son extends React.Component{
+        render(){
+            return (
+                <div>
+                   姓名 {this.props.name}
+                </div>
+            );
+        }
+    }
+    class Daughter extends React.Component{
+        render(){
+            return (
+                <div>
+                    年龄 {this.props.age}
+                </div>
+            );
+        }
+    }
+    ReactDOM.render(<Father/>,document.getElementById('example1'))
+</script>
+</body>
+</html>
