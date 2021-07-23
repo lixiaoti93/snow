@@ -8,9 +8,9 @@ public class RedisDemo2 {
          jedis.hset("ceshi","a","测试");
          jedis.expire("ceshi",2);
          Thread.sleep(3000);
-         long a= jedis.del("ceshi1");
-         long b = jedis.del("ceshi");
-         long c =jedis.del("ceshi","ceshi1");
+        long a= jedis.del("ceshi1");
+        long b = jedis.del("ceshi");
+        long c =jedis.del("ceshi","ceshi1");
         System.out.println(a+"\n"+b+"\n"+c);
     }
 }
