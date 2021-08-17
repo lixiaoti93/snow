@@ -32,7 +32,6 @@
         render(){
             return(
                 <div>
-                    <input type="text" ref="content"/>&nbsp;&nbsp;
                     <input type="text" ref={input => this.input =input}/>&nbsp;&nbsp;
                     <button onClick={this.showPut}>提示输入</button>&nbsp;&nbsp;
                     <input type="text"  placeholder="失去焦点提示内容" onBlur={this.handBlur}/>

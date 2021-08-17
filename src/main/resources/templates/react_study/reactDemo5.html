@@ -31,7 +31,9 @@
         handleClick() {
             console.log('handleClick()', this);
             const isLoveMe = !this.state.isLoveMe;
-            this.setState({isLoveMe});
+            this.setState({
+                isLoveMe:isLoveMe
+            });
         }
 
         render() {
