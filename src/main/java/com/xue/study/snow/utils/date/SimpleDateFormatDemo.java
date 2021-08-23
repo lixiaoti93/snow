@@ -9,12 +9,13 @@ import java.util.Map;
 
 public class SimpleDateFormatDemo {
     public static void main(String[] args) throws ParseException {
-        String dateTime = "2021-07-01 15:40:23.098";
         SimpleDateFormat sdf  = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date = sdf.parse(dateTime);
-        Map map  = new Hashtable();
+        Date date = new Date();
+        String times = sdf.format(date.getTime()-10*60*1000);
+        Date date2 =sdf.parse(times);
 
-        System.out.println(date);
         System.out.println(sdf.format(date));
+        System.out.println(sdf.format(date2));
+        System.out.println(times);
     }
 }

@@ -9,5 +9,6 @@ public class JSonDemo {
         String a = "[{}]";
         List<Object>  list = JSON.parseArray(a);
         System.out.println(list.size());
+        System.out.println(4|3);
     }
 }
