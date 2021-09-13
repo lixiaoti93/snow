@@ -12,7 +12,9 @@ public class StringDemo {
 //        System.out.println(c);
         StringBuilder sb = new StringBuilder();
         sb.append("业务账号：BJT124、BJT234");
-        String result = sb.substring(sb.indexOf("：")+1);
+//        String result = sb.substring(0,sb.indexOf("：")+1);
+        String result = sb.toString();
         System.out.println(result);
+        System.out.println(result.lastIndexOf("、"));
     }
 }

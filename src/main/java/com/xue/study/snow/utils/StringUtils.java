@@ -10,4 +10,11 @@ public class StringUtils {
         }
 
     }
+    public static String getStringValue(Object object){
+        if(null!=object){
+            return String.valueOf(object);
+
+        }
+        return "";
+    }
 }

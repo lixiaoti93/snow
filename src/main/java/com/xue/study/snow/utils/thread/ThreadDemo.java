@@ -16,7 +16,7 @@ public class ThreadDemo extends Thread {
 
     public static void main(String[] args) throws InterruptedException {
         ThreadDemo threadDemo = new ThreadDemo();
-        Thread.sleep(1000);
+        Thread.sleep(1000,99999999);
         threadDemo.start();
     }
 }

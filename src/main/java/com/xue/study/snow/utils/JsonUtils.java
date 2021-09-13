@@ -20,7 +20,7 @@ public class JsonUtils {
         return objectMapper.readValue(json,cls);
     }
 
-    public static String transObjectToJsonString(Class cls){
+    public static String transObjectToJsonString(Object cls){
         try {
             return objectMapper.writeValueAsString(cls);
         } catch (JsonProcessingException e) {
