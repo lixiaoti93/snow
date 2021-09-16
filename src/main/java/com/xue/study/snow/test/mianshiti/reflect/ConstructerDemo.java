@@ -1,7 +1,9 @@
 package com.xue.study.snow.test.mianshiti.reflect;
 
+import com.xue.study.snow.test.mianshiti.factory.BeanFactory;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
@@ -37,6 +39,13 @@ public class ConstructerDemo {
         //
         constructor.setAccessible(true);
         User user = constructor.newInstance("lisi","13");
+        System.out.println(user);
+
+    }
+    @Test
+    public void test2() throws IOException {
+        User user = BeanFactory.getBean("user");
+        user.setName("123");
         System.out.println(user);
 
     }
