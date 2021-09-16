@@ -1,6 +1,6 @@
 package com.xue.study.snow.test.mianshiti.factory;
 
-import com.xue.study.snow.utils.annotation.AnonotationDemo;
+import com.xue.study.snow.test.mianshiti.annotation.AnnotationDemo1;
 
 import java.lang.reflect.Field;
 
@@ -12,10 +12,13 @@ public class FieldConfig {
         Field[] fields = cls.getDeclaredFields();
         //遍历所有的属性
         for(Field field:fields){
-            if(field.isAnnotationPresent(AnonotationDemo.class)){
+            field.setAccessible(true);
+            if(field.isAnnotationPresent(AnnotationDemo1.class)){
                 //获取 注解
-                AnonotationDemo anonotationDemo = field.getAnnotation(AnonotationDemo.class);
+                AnnotationDemo1 anonotationDemo = field.getAnnotation(AnnotationDemo1.class);
+                String value = anonotationDemo.value();
 
+                field.set(obj,value);
 
             }
 

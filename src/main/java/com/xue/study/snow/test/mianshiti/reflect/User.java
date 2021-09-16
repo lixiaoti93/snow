@@ -1,18 +1,18 @@
 package com.xue.study.snow.test.mianshiti.reflect;
 
-import com.xue.study.snow.test.mianshiti.annotation.AnnotationDemo;
-import com.xue.study.snow.utils.annotation.AnonotationDemo;
+import com.xue.study.snow.test.mianshiti.annotation.AnnotationDemo1;
+
 
 
 public class User {
-    @AnnotationDemo(value = "${user}")
+    @AnnotationDemo1(value = "${user}")
     private String name;
-    @AnnotationDemo(value = "123456")
+    @AnnotationDemo1(value = "123456")
     private String password;
 
     public User() {
     }
-    @AnonotationDemo
+
     private User(String name, String password) {
         this.name = name;
         this.password = password;
